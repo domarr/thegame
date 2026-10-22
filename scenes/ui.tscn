@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b2q0prbcagpbw"]
+
+[ext_resource type="Script" uid="uid://cuypp4uiudl0f" path="res://label.gd" id="1_fyqef"]
+
+[node name="ui" type="CanvasLayer" unique_id=1216719531]
+
+[node name="Label" type="Label" parent="." unique_id=300693117]
+offset_left = 378.0
+offset_top = 16.0
+offset_right = 751.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "test test 67"
+script = ExtResource("1_fyqef")
