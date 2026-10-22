@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 700.0
+var MAX_SPEED = 700.0
 const ACCELERATION = 1200.0 # Units per second squared
 const FRICTION = 1200.0       # Units per second squared
 const JUMP_VELOCITY = -400.0
@@ -11,6 +11,13 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	# Air acceleration boost
+	if not is_on_floor():
+		MAX_SPEED = 1000
+	else:
+		await 1
+		MAX_SPEED = 700.0
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -26,7 +33,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Gradually slow down to 0
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
-		#max speed dosent apply
 
 
 	move_and_slide()
