@@ -12,11 +12,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	# Air acceleration boost
+	# Air acceleration
 	if not is_on_floor():
-		MAX_SPEED = 1000
+		MAX_SPEED += 10
 	else:
-		await 1
 		MAX_SPEED = 700.0
 
 	# Handle jump.
