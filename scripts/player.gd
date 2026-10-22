@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 		MAX_SPEED = 700.0
 
 	# Handle jump.
+	#TODO longer u press jump the higher u jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
