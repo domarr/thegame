@@ -16,65 +16,70 @@ distance = -287.81
 normal = Vector2(0.9995921, 0.028559774)
 distance = -68.029396
 
-[node name="level" type="Sprite2D" unique_id=1172941972]
+[node name="name this later" type="Node2D" unique_id=950480504]
+
+[node name="level" type="Sprite2D" parent="." unique_id=1172941972]
 position = Vector2(567, 323)
 scale = Vector2(1.015625, 0.99691355)
 texture = ExtResource("1_w7c3h")
 
-[node name="plat" type="Sprite2D" parent="." unique_id=26942242]
-position = Vector2(-294, 57.000008)
+[node name="plats" type="Node2D" parent="level" unique_id=257030471]
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="plat" type="Sprite2D" parent="level/plats" unique_id=26942242]
+position = Vector2(-294, 57.00003)
 scale = Vector2(0.53516746, 0.6599999)
 texture = ExtResource("2_w8frs")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plat" unique_id=274540074]
+[node name="StaticBody2D" type="StaticBody2D" parent="level/plats/plat" unique_id=274540074]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plat/StaticBody2D" unique_id=1387593700]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/plats/plat/StaticBody2D" unique_id=1387593700]
 position = Vector2(9.645752, -3.0302124)
 shape = SubResource("RectangleShape2D_j2fne")
 
-[node name="plat2" type="Sprite2D" parent="." unique_id=1498455384]
-position = Vector2(320, -8)
+[node name="plat2" type="Sprite2D" parent="level/plats" unique_id=1498455384]
+position = Vector2(319.99994, -8)
 scale = Vector2(0.305, 0.372)
 texture = ExtResource("2_w8frs")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plat2" unique_id=2093725545]
+[node name="StaticBody2D" type="StaticBody2D" parent="level/plats/plat2" unique_id=2093725545]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plat2/StaticBody2D" unique_id=2031521282]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/plats/plat2/StaticBody2D" unique_id=2031521282]
 position = Vector2(9.645752, -3.0302124)
 shape = SubResource("RectangleShape2D_j2fne")
 
-[node name="plat3" type="Sprite2D" parent="." unique_id=276856688]
+[node name="plat3" type="Sprite2D" parent="level/plats" unique_id=276856688]
 position = Vector2(2297, 60)
-scale = Vector2(3.47, 0.372)
+scale = Vector2(3.4699998, 0.372)
 texture = ExtResource("2_w8frs")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="plat3" unique_id=241290830]
+[node name="StaticBody2D" type="StaticBody2D" parent="level/plats/plat3" unique_id=241290830]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plat3/StaticBody2D" unique_id=783353896]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/plats/plat3/StaticBody2D" unique_id=783353896]
 position = Vector2(9.645752, -3.0302124)
 shape = SubResource("RectangleShape2D_j2fne")
 
-[node name="player" parent="." unique_id=1792437859 instance=ExtResource("3_w8frs")]
+[node name="player" parent="level" unique_id=1792437859 instance=ExtResource("3_w8frs")]
 position = Vector2(-432, -113)
 
-[node name="borders" type="StaticBody2D" parent="." unique_id=1448323326]
+[node name="borders" type="StaticBody2D" parent="level" unique_id=1448323326]
 position = Vector2(-506, 27)
 
-[node name="bottom" type="CollisionShape2D" parent="borders" unique_id=1440461486]
+[node name="bottom" type="CollisionShape2D" parent="level/borders" unique_id=1440461486]
 position = Vector2(529, 7)
 shape = SubResource("WorldBoundaryShape2D_j2fne")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="borders" unique_id=1112674147]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/borders" unique_id=1112674147]
 shape = SubResource("WorldBoundaryShape2D_78bon")
 
-[node name="RthtgjrdgvfssZefhgewdfgns" type="Sprite2D" parent="." unique_id=1167214706]
+[node name="very important image" type="Sprite2D" parent="level" unique_id=1167214706]
 position = Vector2(41, 438)
 scale = Vector2(0.8040541, 0.51724136)
 texture = ExtResource("4_mx8sn")
 
-[node name="ui" parent="." unique_id=1216719531 instance=ExtResource("5_ppgk2")]
+[node name="ui" parent="level" unique_id=1216719531 instance=ExtResource("5_ppgk2")]
 
-[node name="Label" parent="ui" index="0" unique_id=300693117]
+[node name="Label" parent="level/ui" index="0" unique_id=300693117]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -84,6 +89,6 @@ offset_right = 73.25
 offset_bottom = 23.0
 grow_horizontal = 2
 
-[connection signal="speed" from="player" to="ui/Label" method="_on_player_speed"]
+[connection signal="speed" from="level/player" to="level/ui/Label" method="_on_player_speed"]
 
-[editable path="ui"]
+[editable path="level/ui"]
