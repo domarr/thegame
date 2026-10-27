@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cg0t6jitql705"]
 
-[ext_resource type="Texture2D" uid="uid://de11if1uc8c4p" path="res://dfgdfgfghf.png" id="1_w7c3h"]
-[ext_resource type="Texture2D" uid="uid://ba7r31uvhkb82" path="res://FGFDGHJEERERIOIORTUIRTJHIRTGGJH.png" id="2_w8frs"]
+[ext_resource type="Texture2D" uid="uid://de11if1uc8c4p" path="res://assests/dfgdfgfghf.png" id="1_w7c3h"]
+[ext_resource type="Texture2D" uid="uid://ba7r31uvhkb82" path="res://assests/FGFDGHJEERERIOIORTUIRTJHIRTGGJH.png" id="2_w8frs"]
 [ext_resource type="PackedScene" uid="uid://diclj2xvxr7kh" path="res://scenes/player.tscn" id="3_w8frs"]
-[ext_resource type="Texture2D" uid="uid://dwghwu8d4dwm6" path="res://rthtgjrdgvfssZefhgewdfgns.png" id="4_mx8sn"]
+[ext_resource type="Texture2D" uid="uid://dwghwu8d4dwm6" path="res://assests/rthtgjrdgvfssZefhgewdfgns.png" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://b2q0prbcagpbw" path="res://scenes/ui.tscn" id="5_ppgk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2fne"]

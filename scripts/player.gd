@@ -13,6 +13,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	# Air acceleration
+	#TODO scrollhop swag reductor
 	if not is_on_floor():
 		MAX_SPEED += 10
 	else:
