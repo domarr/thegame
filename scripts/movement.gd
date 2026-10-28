@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
-var max_speed = 700.0
-const acceleration = 1200.0 # Units per second squared
-const friction = 1200.0       # Units per second squared
+@export var max_speed = 700.0
+const acceleration = 1200.0 
+const friction = 1200.0      
 const jump_velocity = -400.0
+@export var min_jump_velocity: float = -200.0
+@export var air_accel = 10
 signal speed
 
 
@@ -15,16 +17,20 @@ func _physics_process(delta: float) -> void:
 	# Air acceleration
 	#TODO scrollhop swag reductor
 	if not is_on_floor():
-		max_speed += 10
+		max_speed += air_accel
 	else:
 		max_speed = 700.0
 
-	# jump
+
+
+# jump
 	#TODO 
-	# longer u press jump the higher u jump
 	# track if jump is good
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+# 2. Variable jump logic
+	if Input.is_action_just_released("jump") and velocity.y < min_jump_velocity:
+		velocity.y = min_jump_velocity
 
 	# Gets input direction (-1, 0, or 1)
 	var direction := Input.get_axis("left", "right")
