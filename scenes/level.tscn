@@ -85,4 +85,5 @@ texture = ExtResource("4_mx8sn")
 [connection signal="speed" from="level/player" to="ui/Label" method="_on_player_speed"]
 [connection signal="champ" from="champ select" to="champ select" method="_on_champ"]
 
+[editable path="champ select"]
 [editable path="ui"]

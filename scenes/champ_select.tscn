@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b7k64w2ekdb23"]
 
 [ext_resource type="Script" uid="uid://ct4eyilalqpbp" path="res://scripts/champselect.gd" id="1_mhf8t"]
+[ext_resource type="Script" uid="uid://e4dvf3ofte6r" path="res://scripts/button.gd" id="2_crelr"]
+[ext_resource type="Texture2D" uid="uid://0ewwb71dmf1f" path="res://assests/thtgrsdvdaghsweagxdf.png" id="3_4f6xf"]
+[ext_resource type="Script" uid="uid://21i0o87425sh" path="res://scripts/champ_select_bg.gd" id="3_osh8o"]
 
 [node name="champ select" type="Control" unique_id=892263882]
 layout_mode = 3
@@ -12,3 +15,29 @@ grow_vertical = 2
 script = ExtResource("1_mhf8t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=308279830]
+
+[node name="champ select bg" type="Sprite2D" parent="CanvasLayer" unique_id=2085990667]
+position = Vector2(581, 330)
+texture = ExtResource("3_4f6xf")
+script = ExtResource("3_osh8o")
+
+[node name="dash guy button" type="Button" parent="CanvasLayer" unique_id=926909839]
+offset_left = 388.0
+offset_top = 140.0
+offset_right = 519.0
+offset_bottom = 248.0
+text = "dash guy"
+script = ExtResource("2_crelr")
+
+[node name="grapple guy button" type="Button" parent="CanvasLayer" unique_id=273321530]
+offset_left = 601.0
+offset_top = 150.0
+offset_right = 732.0
+offset_bottom = 258.0
+text = "grapple guy"
+script = ExtResource("2_crelr")
+
+[connection signal="champ" from="." to="CanvasLayer/dash guy button" method="_on_champ_select_champ"]
+[connection signal="off" from="CanvasLayer/dash guy button" to="CanvasLayer/champ select bg" method="_on_dash_guy_button_off"]
+[connection signal="pressed" from="CanvasLayer/dash guy button" to="CanvasLayer/dash guy button" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/grapple guy button" to="CanvasLayer/grapple guy button" method="_on_pressed"]
