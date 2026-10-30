@@ -6,6 +6,7 @@ const jump_velocity = -400.0
 var min_jump_velocity: float = -200.0
 var air_accel = 10
 var champ = "nada"
+var champsel = false # there HAS to be a better to do this
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
