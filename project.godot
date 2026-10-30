@@ -14,6 +14,10 @@ config/name="thegame"
 run/main_scene="uid://cg0t6jitql705"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+Globals="*uid://b6ib11bjakb2a"
+
 [display]
 
 window/stretch/mode="canvas_items"

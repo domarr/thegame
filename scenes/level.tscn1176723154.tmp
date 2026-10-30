@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://cg0t6jitql705"]
+
+[ext_resource type="Texture2D" uid="uid://de11if1uc8c4p" path="res://assests/dfgdfgfghf.png" id="1_w7c3h"]
+[ext_resource type="Texture2D" uid="uid://ba7r31uvhkb82" path="res://assests/FGFDGHJEERERIOIORTUIRTJHIRTGGJH.png" id="2_w8frs"]
+[ext_resource type="PackedScene" uid="uid://diclj2xvxr7kh" path="res://scenes/player.tscn" id="3_w8frs"]
+[ext_resource type="Texture2D" uid="uid://dwghwu8d4dwm6" path="res://assests/rthtgjrdgvfssZefhgewdfgns.png" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://b2q0prbcagpbw" path="res://scenes/ui.tscn" id="5_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://b7k64w2ekdb23" path="res://scenes/champ_select.tscn" id="6_2r41h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2fne"]
+size = Vector2(1023.3728, 163.63647)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j2fne"]
+distance = -287.81
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_78bon"]
+normal = Vector2(0.9995921, 0.028559774)
+distance = -68.029396
+
+[node name="root" type="Node2D" unique_id=950480504]
+
+[node name="level" type="Sprite2D" parent="." unique_id=1172941972]
+position = Vector2(567, 323)
+scale = Vector2(1.015625, 0.99691355)
+texture = ExtResource("1_w7c3h")
+
+[node name="plats" type="Node2D" parent="level" unique_id=257030471]
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="plat" type="Sprite2D" parent="level/plats" unique_id=26942242]
+position = Vector2(-294, 57.00003)
+scale = Vector2(0.53516746, 0.6599999)
+texture = ExtResource("2_w8frs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="level/plats/plat" unique_id=274540074]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/plats/plat/StaticBody2D" unique_id=1387593700]
+position = Vector2(9.645752, -3.0302124)
+shape = SubResource("RectangleShape2D_j2fne")
+
+[node name="plat2" type="Sprite2D" parent="level/plats" unique_id=1498455384]
+position = Vector2(319.99994, -8)
+scale = Vector2(0.305, 0.372)
+texture = ExtResource("2_w8frs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="level/plats/plat2" unique_id=2093725545]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/plats/plat2/StaticBody2D" unique_id=2031521282]
+position = Vector2(9.645752, -3.0302124)
+shape = SubResource("RectangleShape2D_j2fne")
+
+[node name="plat3" type="Sprite2D" parent="level/plats" unique_id=276856688]
+position = Vector2(2297, 60)
+scale = Vector2(3.4699998, 0.372)
+texture = ExtResource("2_w8frs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="level/plats/plat3" unique_id=241290830]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/plats/plat3/StaticBody2D" unique_id=783353896]
+position = Vector2(9.645752, -3.0302124)
+shape = SubResource("RectangleShape2D_j2fne")
+
+[node name="player" parent="level" unique_id=1792437859 instance=ExtResource("3_w8frs")]
+position = Vector2(-432, -113)
+max_speed = null
+min_jump_velocity = null
+air_accel = null
+
+[node name="borders" type="StaticBody2D" parent="level" unique_id=1448323326]
+position = Vector2(-506, 27)
+
+[node name="bottom" type="CollisionShape2D" parent="level/borders" unique_id=1440461486]
+position = Vector2(529, 7)
+shape = SubResource("WorldBoundaryShape2D_j2fne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/borders" unique_id=1112674147]
+shape = SubResource("WorldBoundaryShape2D_78bon")
+
+[node name="very important image" type="Sprite2D" parent="level" unique_id=1167214706]
+position = Vector2(41, 438)
+scale = Vector2(0.8040541, 0.51724136)
+texture = ExtResource("4_mx8sn")
+
+[node name="champ select" parent="." unique_id=892263882 instance=ExtResource("6_2r41h")]
+
+[node name="ui" parent="." unique_id=1216719531 instance=ExtResource("5_ppgk2")]
+
+[connection signal="speed" from="level/player" to="ui/Label" method="_on_player_speed"]
+[connection signal="champ" from="champ select" to="champ select" method="_on_champ"]
+
+[editable path="champ select"]
+[editable path="ui"]
