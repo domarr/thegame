@@ -2,4 +2,4 @@
 
 
 
-make champselect then win loss screen then level system
+make ~~champselect~~ then win loss screen then level system
