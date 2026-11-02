@@ -3,7 +3,13 @@ extends CharacterBody2D
 
 signal speed
 
-
+func _ready() -> void:
+	# value changes go here
+	if Globals.champ == "dash":
+		Globals.jump_velocity = 200
+func _process(delta: float) -> void:
+	if Input.is_action_just_released("ability"):
+		pass
 func _physics_process(delta: float) -> void:
 	# gravity
 	if not is_on_floor():
@@ -41,4 +47,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	speed.emit(velocity)
-	
+
+	if Input.is_action_just_released("ability"):
+		pass
