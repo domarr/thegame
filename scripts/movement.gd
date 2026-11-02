@@ -3,11 +3,11 @@ extends CharacterBody2D
 
 signal speed
 
-func _ready() -> void:
+func _process(delta: float) -> void:
 	# value changes go here
 	if Globals.champ == "dash":
-		Globals.jump_velocity = 200
-func _process(delta: float) -> void:
+		Globals.min_jump_velocity = 150
+		Globals.air_accel = 0
 	if Input.is_action_just_released("ability"):
 		pass
 func _physics_process(delta: float) -> void:
@@ -21,8 +21,6 @@ func _physics_process(delta: float) -> void:
 		Globals.max_speed += Globals.air_accel
 	else:
 		Globals.max_speed = 700.0
-
-
 
 # jump
 	#TODO 
@@ -43,10 +41,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Gradually slow down to 0
 		velocity.x = move_toward(velocity.x, 0, Globals.friction * delta)
+	 #ability handling
+	if Input.is_action_just_released("ability"):
+		if Globals.champ == "dash":
+			# needs to be directional
+			velocity += Vector2(300,0)
 
 
 	move_and_slide()
 	speed.emit(velocity)
-
-	if Input.is_action_just_released("ability"):
-		pass
