@@ -6,10 +6,11 @@ signal speed
 func _process(delta: float) -> void:
 	# value changes go here
 	if Globals.champ == "dash":
-		Globals.min_jump_velocity = 150
+		Globals.min_jump_velocity = 15
 		Globals.air_accel = 0
-	if Input.is_action_just_released("ability"):
-		pass
+	# reset
+	if Input.is_action_just_pressed("reset"):
+		position = Vector2(-300,20)
 func _physics_process(delta: float) -> void:
 	# gravity
 	if not is_on_floor():
@@ -42,11 +43,16 @@ func _physics_process(delta: float) -> void:
 		# Gradually slow down to 0
 		velocity.x = move_toward(velocity.x, 0, Globals.friction * delta)
 	 #ability handling
-	if Input.is_action_just_released("ability"):
-		if Globals.champ == "dash":
-			# needs to be directional
+	if Input.is_action_just_pressed("ability"):
+		#dash
+		var can_dash
+		if Globals.champ == "dash" and !is_on_floor() and can_dash:
+			#TODO needs to be directional
+			print("dash")
 			velocity += Vector2(300,0)
-
+			
+		if is_on_floor():
+			can_dash = true
 
 	move_and_slide()
 	speed.emit(velocity)
