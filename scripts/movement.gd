@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 signal speed
+var can_dash = true
 
 func _process(delta: float) -> void:
 	# value changes go here
@@ -11,6 +12,8 @@ func _process(delta: float) -> void:
 	# reset
 	if Input.is_action_just_pressed("reset"):
 		position = Vector2(-300,20)
+	if is_on_floor():
+		can_dash = true
 func _physics_process(delta: float) -> void:
 	# gravity
 	if not is_on_floor():
@@ -45,14 +48,14 @@ func _physics_process(delta: float) -> void:
 	 #ability handling
 	if Input.is_action_just_pressed("ability"):
 		#dash
-		var can_dash
 		if Globals.champ == "dash" and !is_on_floor() and can_dash:
 			#TODO needs to be directional
 			print("dash")
 			velocity += Vector2(300,0)
+			can_dash = false
 			
-		if is_on_floor():
-			can_dash = true
 
 	move_and_slide()
 	speed.emit(velocity)
+	if(!can_dash):
+		print(can_dash)
