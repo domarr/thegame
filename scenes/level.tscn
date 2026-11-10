@@ -82,6 +82,8 @@ texture = ExtResource("4_mx8sn")
 
 [node name="ui" parent="." unique_id=1216719531 instance=ExtResource("5_ppgk2")]
 
+[connection signal="reset" from="level/player" to="level/player" method="_on_reset"]
+[connection signal="reset" from="level/player" to="ui/Timer/Label2" method="_on_player_reset"]
 [connection signal="speed" from="level/player" to="ui/Label" method="_on_player_speed"]
 [connection signal="champ" from="champ select" to="champ select" method="_on_champ"]
 
