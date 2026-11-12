@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://ba7r31uvhkb82" path="res://assests/FGFDGHJEERERIOIORTUIRTJHIRTGGJH.png" id="2_w8frs"]
 [ext_resource type="PackedScene" uid="uid://diclj2xvxr7kh" path="res://scenes/player.tscn" id="3_w8frs"]
 [ext_resource type="Texture2D" uid="uid://dwghwu8d4dwm6" path="res://assests/rthtgjrdgvfssZefhgewdfgns.png" id="4_mx8sn"]
+[ext_resource type="Texture2D" uid="uid://bj7kt3q5r2ma4" path="res://assests/winscreen stuff/wincon.png" id="5_8c41q"]
 [ext_resource type="PackedScene" uid="uid://b2q0prbcagpbw" path="res://scenes/ui.tscn" id="5_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://b7k64w2ekdb23" path="res://scenes/champ_select.tscn" id="6_2r41h"]
+[ext_resource type="Script" uid="uid://dej22wyx51tvm" path="res://scripts/wincon.gd" id="6_olg7q"]
+[ext_resource type="PackedScene" uid="uid://ba1jmnaiae1r2" path="res://scenes/winscreen.tscn" id="7_klq6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2fne"]
 size = Vector2(1023.3728, 163.63647)
@@ -16,6 +19,9 @@ distance = -287.81
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_78bon"]
 normal = Vector2(0.9995921, 0.028559774)
 distance = -68.029396
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78bon"]
+size = Vector2(151.7865, 169.52322)
 
 [node name="root" type="Node2D" unique_id=950480504]
 
@@ -78,14 +84,41 @@ position = Vector2(41, 438)
 scale = Vector2(0.8040541, 0.51724136)
 texture = ExtResource("4_mx8sn")
 
+[node name="wincon" type="Sprite2D" parent="level" unique_id=1224424505]
+z_index = -1
+position = Vector2(3817.354, -51.15789)
+texture = ExtResource("5_8c41q")
+script = ExtResource("6_olg7q")
+
+[node name="StaticBody2D" type="Area2D" parent="level/wincon" unique_id=1602206434]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/wincon/StaticBody2D" unique_id=830013713]
+position = Vector2(-65.89111, 4.5139465)
+scale = Vector2(1.0000002, 1.0000006)
+shape = SubResource("RectangleShape2D_78bon")
+
 [node name="champ select" parent="." unique_id=892263882 instance=ExtResource("6_2r41h")]
 
 [node name="ui" parent="." unique_id=1216719531 instance=ExtResource("5_ppgk2")]
 
+[node name="winscreen" parent="ui" unique_id=1444745836 instance=ExtResource("7_klq6b")]
+visible = false
+offset_left = 378.0
+offset_top = 16.0
+offset_right = 378.0
+offset_bottom = 16.0
+
+[node name="Sprite2D" parent="ui/winscreen/CanvasLayer" parent_id_path=PackedInt32Array(1444745836, 756733090) index="0" unique_id=872120254]
+visible = false
+position = Vector2(573, 318)
+scale = Vector2(1.0364584, 1)
+
 [connection signal="reset" from="level/player" to="level/player" method="_on_reset"]
 [connection signal="reset" from="level/player" to="ui/Timer/Label2" method="_on_player_reset"]
 [connection signal="speed" from="level/player" to="ui/Label" method="_on_player_speed"]
+[connection signal="body_entered" from="level/wincon/StaticBody2D" to="level/wincon" method="_on_static_body_2d_body_entered"]
 [connection signal="champ" from="champ select" to="champ select" method="_on_champ"]
 
 [editable path="champ select"]
 [editable path="ui"]
+[editable path="ui/winscreen"]
