@@ -12,5 +12,5 @@ grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=756733090]
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=872120254]
+[node name="winscreen" type="Sprite2D" parent="CanvasLayer" unique_id=872120254]
 texture = ExtResource("1_47rfs")

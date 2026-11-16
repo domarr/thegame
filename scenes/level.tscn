@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7k64w2ekdb23" path="res://scenes/champ_select.tscn" id="6_2r41h"]
 [ext_resource type="Script" uid="uid://dej22wyx51tvm" path="res://scripts/wincon.gd" id="6_olg7q"]
 [ext_resource type="PackedScene" uid="uid://ba1jmnaiae1r2" path="res://scenes/winscreen.tscn" id="7_klq6b"]
+[ext_resource type="Script" uid="uid://beevqwbeqdbyj" path="res://scripts/winscreen.gd" id="10_olg7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2fne"]
 size = Vector2(1023.3728, 163.63647)
@@ -101,24 +102,30 @@ shape = SubResource("RectangleShape2D_78bon")
 
 [node name="ui" parent="." unique_id=1216719531 instance=ExtResource("5_ppgk2")]
 
-[node name="winscreen" parent="ui" unique_id=1444745836 instance=ExtResource("7_klq6b")]
-visible = false
+[node name="winscreen" parent="." unique_id=1444745836 instance=ExtResource("7_klq6b")]
 offset_left = 378.0
 offset_top = 16.0
 offset_right = 378.0
 offset_bottom = 16.0
+script = ExtResource("6_olg7q")
 
-[node name="Sprite2D" parent="ui/winscreen/CanvasLayer" parent_id_path=PackedInt32Array(1444745836, 756733090) index="0" unique_id=872120254]
+[node name="CanvasLayer" parent="winscreen" index="0" unique_id=756733090]
+follow_viewport_enabled = true
+
+[node name="winscreen" parent="winscreen/CanvasLayer" index="0" unique_id=872120254]
 visible = false
 position = Vector2(573, 318)
 scale = Vector2(1.0364584, 1)
+script = ExtResource("10_olg7q")
 
 [connection signal="reset" from="level/player" to="level/player" method="_on_reset"]
 [connection signal="reset" from="level/player" to="ui/Timer/Label2" method="_on_player_reset"]
 [connection signal="speed" from="level/player" to="ui/Label" method="_on_player_speed"]
 [connection signal="body_entered" from="level/wincon/StaticBody2D" to="level/wincon" method="_on_static_body_2d_body_entered"]
 [connection signal="champ" from="champ select" to="champ select" method="_on_champ"]
+[connection signal="win" from="winscreen" to="ui/Timer/Label2" method="_on_winscreen_win"]
+[connection signal="win" from="winscreen" to="winscreen/CanvasLayer/winscreen" method="_on_winscreen_win"]
 
 [editable path="champ select"]
 [editable path="ui"]
-[editable path="ui/winscreen"]
+[editable path="winscreen"]
