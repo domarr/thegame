@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://de11if1uc8c4p" path="res://assests/dfgdfgfghf.png" id="1_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://ba7r31uvhkb82" path="res://assests/FGFDGHJEERERIOIORTUIRTJHIRTGGJH.png" id="2_w8frs"]
 [ext_resource type="PackedScene" uid="uid://diclj2xvxr7kh" path="res://scenes/player.tscn" id="3_w8frs"]
+[ext_resource type="Script" uid="uid://dsle3micdavut" path="res://scenes/player_camera.gd" id="4_8iemx"]
 [ext_resource type="Texture2D" uid="uid://dwghwu8d4dwm6" path="res://assests/rthtgjrdgvfssZefhgewdfgns.png" id="4_mx8sn"]
 [ext_resource type="Texture2D" uid="uid://bj7kt3q5r2ma4" path="res://assests/winscreen stuff/wincon.png" id="5_8c41q"]
 [ext_resource type="PackedScene" uid="uid://b2q0prbcagpbw" path="res://scenes/ui.tscn" id="5_ppgk2"]
@@ -10,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dej22wyx51tvm" path="res://scripts/wincon.gd" id="6_olg7q"]
 [ext_resource type="PackedScene" uid="uid://ba1jmnaiae1r2" path="res://scenes/winscreen.tscn" id="7_klq6b"]
 [ext_resource type="Script" uid="uid://beevqwbeqdbyj" path="res://scripts/winscreen.gd" id="10_olg7q"]
+[ext_resource type="Script" uid="uid://b3rqn616o272p" path="res://scenes/winscreen_camera.gd" id="11_t1rx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2fne"]
 size = Vector2(1023.3728, 163.63647)
@@ -27,7 +29,7 @@ size = Vector2(151.7865, 169.52322)
 [node name="root" type="Node2D" unique_id=950480504]
 
 [node name="level" type="Sprite2D" parent="." unique_id=1172941972]
-position = Vector2(567, 323)
+position = Vector2(567, 327)
 scale = Vector2(1.015625, 0.99691355)
 texture = ExtResource("1_w7c3h")
 
@@ -69,6 +71,9 @@ shape = SubResource("RectangleShape2D_j2fne")
 
 [node name="player" parent="level" unique_id=1792437859 instance=ExtResource("3_w8frs")]
 position = Vector2(-432, -113)
+
+[node name="player camera" parent="level/player" index="2" unique_id=1657059470]
+script = ExtResource("4_8iemx")
 
 [node name="borders" type="StaticBody2D" parent="level" unique_id=1448323326]
 position = Vector2(-506, 27)
@@ -113,19 +118,21 @@ script = ExtResource("6_olg7q")
 follow_viewport_enabled = true
 
 [node name="winscreen" parent="winscreen/CanvasLayer" index="0" unique_id=872120254]
-visible = false
-position = Vector2(573, 318)
+position = Vector2(-868, 1492)
 scale = Vector2(1.0364584, 1)
 script = ExtResource("10_olg7q")
+
+[node name="winscreen camera" type="Camera2D" parent="winscreen/CanvasLayer/winscreen" index="0" unique_id=2109582007]
+enabled = false
+script = ExtResource("11_t1rx8")
 
 [connection signal="reset" from="level/player" to="level/player" method="_on_reset"]
 [connection signal="reset" from="level/player" to="ui/Timer/Label2" method="_on_player_reset"]
 [connection signal="speed" from="level/player" to="ui/Label" method="_on_player_speed"]
 [connection signal="body_entered" from="level/wincon/StaticBody2D" to="level/wincon" method="_on_static_body_2d_body_entered"]
 [connection signal="champ" from="champ select" to="champ select" method="_on_champ"]
-[connection signal="win" from="winscreen" to="ui/Timer/Label2" method="_on_winscreen_win"]
-[connection signal="win" from="winscreen" to="winscreen/CanvasLayer/winscreen" method="_on_winscreen_win"]
 
+[editable path="level/player"]
 [editable path="champ select"]
 [editable path="ui"]
 [editable path="winscreen"]

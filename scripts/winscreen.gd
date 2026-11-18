@@ -1,5 +1,5 @@
 extends Sprite2D
 
-func _on_winscreen_win() -> void:
+func show_win_screen() -> void:
 	print("connection works")
 	visible = true
