@@ -9,6 +9,7 @@ var champ = "nada"
 var champsel = true # there HAS to be a better to do this
 var timer: Timer
 var time = 0
+var level: int
 
 func _ready() -> void:
 	timer = Timer.new()
