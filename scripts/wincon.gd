@@ -1,5 +1,6 @@
 extends Node
-#idk why it says node not found these ARE the paths and it DOES work 
+#throws 3 errors BUTT it works and it breaks when i touch it
+#do what you will with this information 
 @onready var winscreen: Sprite2D = $"../../winscreen/CanvasLayer/winscreen"
 @onready var winscreencamera: Camera2D = $"../../winscreen/CanvasLayer/winscreen/winscreen camera"
 @onready var playercamera: Camera2D = $"../player/player camera"
