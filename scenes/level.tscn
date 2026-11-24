@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ba1jmnaiae1r2" path="res://scenes/winscreen.tscn" id="7_klq6b"]
 [ext_resource type="Script" uid="uid://beevqwbeqdbyj" path="res://scripts/winscreen.gd" id="10_olg7q"]
 [ext_resource type="Script" uid="uid://b3rqn616o272p" path="res://scripts/winscreen_camera.gd" id="11_t1rx8"]
+[ext_resource type="Script" uid="uid://ci8muvrscf8ic" path="res://scripts/time_text.gd" id="14_fpun6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2fne"]
 size = Vector2(1023.3728, 163.63647)
@@ -120,7 +121,7 @@ script = ExtResource("6_olg7q")
 follow_viewport_enabled = true
 
 [node name="winscreen" parent="winscreen/CanvasLayer" index="0" unique_id=872120254]
-position = Vector2(-868, 1492)
+position = Vector2(-392, 1689)
 scale = Vector2(1.0364584, 1)
 script = ExtResource("10_olg7q")
 
@@ -128,9 +129,21 @@ script = ExtResource("10_olg7q")
 enabled = false
 script = ExtResource("11_t1rx8")
 
+[node name="time text" type="Label" parent="winscreen/CanvasLayer/winscreen/winscreen camera" unique_id=1856140823]
+offset_left = -172.70349
+offset_top = -31.0
+offset_right = -41.70349
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0.4140165, 0.038294714, 0.15903091, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 33
+text = "test test"
+script = ExtResource("14_fpun6")
+
 [connection signal="reset" from="level/player" to="level/player" method="_on_reset"]
-[connection signal="reset" from="level/player" to="ui/Label2" method="_on_player_reset"]
-[connection signal="speed" from="level/player" to="ui/Label" method="_on_player_speed"]
+[connection signal="reset" from="level/player" to="ui/time" method="_on_player_reset"]
+[connection signal="speed" from="level/player" to="ui/speed" method="_on_player_speed"]
 [connection signal="body_entered" from="level/wincon/StaticBody2D" to="level/wincon" method="_on_static_body_2d_body_entered"]
 [connection signal="champ" from="champ select" to="champ select" method="_on_champ"]
 

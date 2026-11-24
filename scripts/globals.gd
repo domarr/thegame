@@ -10,6 +10,7 @@ var champsel = true # there HAS to be a better to do this
 var timer: Timer
 var time = 0
 var level: int
+var canmove = false
 
 func _ready() -> void:
 	timer = Timer.new()
@@ -25,3 +26,6 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout():
 	time +=1
+
+func timerstop():
+	timer.stop()

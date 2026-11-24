@@ -7,7 +7,11 @@ extends Node
 
 func _on_static_body_2d_body_entered(body: Node2D) -> void:
 	if body == $"../player":
-		print("win condition met")
 		winscreen.show_win_screen()
+		$"../../ui/time".off()
+		$"../../ui/speed".off()
+		Globals.canmove=false
+		print(Globals.canmove)
+		Globals.timerstop()
 		winscreencamera.on()
 		playercamera.off()

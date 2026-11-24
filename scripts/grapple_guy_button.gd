@@ -13,5 +13,6 @@ func _process(delta: float) -> void:
 		visible = false
 
 func _on_pressed() -> void:
+	Globals.canmove = true
 	Globals.champsel = false
 	Globals.champ = "grapple"

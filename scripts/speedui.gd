@@ -9,6 +9,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func off():
+	visible = false
 
 func _on_player_speed(speed) -> void:
 	text=str(speed)

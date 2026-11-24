@@ -72,9 +72,14 @@ func _physics_process(delta: float) -> void:
 			if velocity.y > 0:
 				is_sliding = true
 				Globals.max_speed = abs(velocity.x)
-
-	move_and_slide()
+	
+	if(Globals.canmove):
+		move_and_slide()
+	
+	
 	speed.emit(velocity)
+	
+	
 
 
 func _on_reset() -> void:
